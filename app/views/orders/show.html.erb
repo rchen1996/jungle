@@ -8,6 +8,8 @@
     <h4>Thank you for your order!</h4>
   </div>
 
+  <% render 'line_item', line_items: @line_items, products: @products %>
+
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 
 </section>
