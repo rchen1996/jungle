@@ -16,6 +16,9 @@ Rails
 
     resources :about, only: [:index]
 
+    get '/register' => 'users#new'
+    get '/users' => 'users#create'
+
     namespace :admin do
       root to: 'dashboard#show'
       resources :products, except: %i[edit update show]
