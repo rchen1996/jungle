@@ -16,6 +16,10 @@ Rails
 
     resources :about, only: [:index]
 
+    get '/login' => 'sessions#new'
+    post '/login' => 'sessions#create'
+    get '/logout' => 'sessions#destroy'
+
     get '/register' => 'users#new'
     get '/users' => 'users#create'
 
