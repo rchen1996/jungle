@@ -21,7 +21,7 @@ Rails
     get '/logout' => 'sessions#destroy'
 
     get '/register' => 'users#new'
-    get '/users' => 'users#create'
+    post '/users' => 'users#create'
 
     namespace :admin do
       root to: 'dashboard#show'
