@@ -45,5 +45,28 @@ RSpec.describe User, type: :model do
         "Password confirmation doesn't match Password",
       )
     end
+
+    it 'should validate that emails are unique' do
+      @user =
+        User.new(
+          first_name: 'Rebecca',
+          last_name: 'Chen',
+          email: 'test@test.com',
+          password: 'password',
+          password_confirmation: 'password',
+        ).save
+
+      @user2 =
+        User.new(
+          first_name: 'John',
+          last_name: 'Smith',
+          email: 'TEST@TEST.com',
+          password: 'password',
+          password_confirmation: 'password',
+        ).save
+
+      expect(@user).to eq(true)
+      expect(@user2).to eq(false)
+    end
   end
 end
