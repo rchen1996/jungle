@@ -140,7 +140,7 @@ RSpec.describe User, type: :model do
         )
 
       authenticate =
-        @user.authenticate_with_credentials('test@test.com', 'password')
+        User.authenticate_with_credentials('test@test.com', 'password')
 
       expect(authenticate).to eq(@user)
     end
@@ -156,7 +156,7 @@ RSpec.describe User, type: :model do
         )
 
       authenticate =
-        @user.authenticate_with_credentials('test@test.com', 'notpassword')
+        User.authenticate_with_credentials('test@test.com', 'notpassword')
 
       expect(authenticate).to eq(nil)
     end
@@ -172,7 +172,7 @@ RSpec.describe User, type: :model do
         )
 
       authenticate =
-        @user.authenticate_with_credentials('testing@test.com', 'notpassword')
+        User.authenticate_with_credentials('testing@test.com', 'notpassword')
 
       expect(authenticate).to eq(nil)
     end
