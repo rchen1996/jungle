@@ -15,5 +15,23 @@ RSpec.describe User, type: :model do
   end
 
   describe 'Validations' do
+    it 'should validate password and password confirmation fields' do
+      @user =
+        User.create(
+          first_name: 'Rebecca',
+          last_name: 'Chen',
+          email: 'rebecca.chen@gmail.com',
+          password: nil,
+          password_confirmation: nil,
+        )
+
+      expect(@user.errors.full_messages).to include("Password can't be blank")
+      expect(@user.errors.full_messages).to include(
+        "Password confirmation can't be blank",
+      )
+    end
+
+    # it 'should validate password confirmation field' do
+    # end
   end
 end
