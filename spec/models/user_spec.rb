@@ -31,7 +31,19 @@ RSpec.describe User, type: :model do
       )
     end
 
-    # it 'should validate password confirmation field' do
-    # end
+    it 'should validate password and password confirmation fields match' do
+      @user =
+        User.create(
+          first_name: 'Rebecca',
+          last_name: 'Chen',
+          email: 'rebecca.chen@gmail.com',
+          password: 'password',
+          password_confirmation: 'notpassword',
+        )
+
+      expect(@user.errors.full_messages).to include(
+        "Password confirmation doesn't match Password",
+      )
+    end
   end
 end
