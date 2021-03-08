@@ -111,5 +111,20 @@ RSpec.describe User, type: :model do
 
       expect(@user.errors.full_messages).to include("Last name can't be blank")
     end
+
+    it 'should validate that passwords have a minimum length when a user account is being created' do
+      @user =
+        User.create(
+          first_name: 'John',
+          last_name: 'Smith',
+          email: 'test@test.com',
+          password: '12345',
+          password_confirmation: '12345',
+        )
+
+      expect(@user.errors.full_messages).to include(
+        'Password is too short (minimum is 6 characters)',
+      )
+    end
   end
 end
