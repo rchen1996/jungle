@@ -195,5 +195,21 @@ RSpec.describe User, type: :model do
 
       expect(authenticate).to eq(@user)
     end
+
+    it 'should return the user when credentials are correct but user types in the wrong case for email' do
+      @user =
+        User.create(
+          first_name: 'John',
+          last_name: 'Smith',
+          email: 'test@test.com',
+          password: 'password',
+          password_confirmation: 'password',
+        )
+
+      authenticate =
+        User.authenticate_with_credentials('tEsT@TEsT.COm', 'password')
+
+      expect(authenticate).to eq(@user)
+    end
   end
 end
