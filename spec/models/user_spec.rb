@@ -57,16 +57,20 @@ RSpec.describe User, type: :model do
         ).save
 
       @user2 =
-        User.new(
+        User.create(
           first_name: 'John',
           last_name: 'Smith',
           email: 'TEST@TEST.com',
           password: 'password',
           password_confirmation: 'password',
-        ).save
+        )
 
       expect(@user).to eq(true)
-      expect(@user2).to eq(false)
+
+      # expect(@user2).to eq(false)
+      expect(@user2.errors.full_messages).to include(
+        'Email has already been taken',
+      )
     end
   end
 end
