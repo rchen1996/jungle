@@ -72,5 +72,44 @@ RSpec.describe User, type: :model do
         'Email has already been taken',
       )
     end
+
+    it 'should validate email to be required' do
+      @user =
+        User.create(
+          first_name: 'John',
+          last_name: 'Smith',
+          email: nil,
+          password: 'password',
+          password_confirmation: 'password',
+        )
+
+      expect(@user.errors.full_messages).to include("Email can't be blank")
+    end
+
+    it 'should validate first name to be required' do
+      @user =
+        User.create(
+          first_name: nil,
+          last_name: 'Smith',
+          email: 'test@test.com',
+          password: 'password',
+          password_confirmation: 'password',
+        )
+
+      expect(@user.errors.full_messages).to include("First name can't be blank")
+    end
+
+    it 'should validate last name to be required' do
+      @user =
+        User.create(
+          first_name: 'John',
+          last_name: nil,
+          email: 'test@test.com',
+          password: 'password',
+          password_confirmation: 'password',
+        )
+
+      expect(@user.errors.full_messages).to include("Last name can't be blank")
+    end
   end
 end
