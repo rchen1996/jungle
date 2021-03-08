@@ -22,5 +22,11 @@ RSpec.feature 'ProductDetails', type: :feature, js: true do
 
     # VERIFY
     expect(page).to have_css 'article.product', count: 10
+
+    first("a[href='/products/10']").click
+
+    sleep 1
+
+    expect(page).to have_css 'article.product-detail'
   end
 end
