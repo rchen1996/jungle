@@ -176,5 +176,24 @@ RSpec.describe User, type: :model do
 
       expect(authenticate).to eq(nil)
     end
+
+    it 'should return the user when credentials are correct and email has added spaces' do
+      @user =
+        User.create(
+          first_name: 'John',
+          last_name: 'Smith',
+          email: 'test@test.com',
+          password: 'password',
+          password_confirmation: 'password',
+        )
+
+      authenticate =
+        User.authenticate_with_credentials(
+          '         test@test.com     ',
+          'password',
+        )
+
+      expect(authenticate).to eq(@user)
+    end
   end
 end
