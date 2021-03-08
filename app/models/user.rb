@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   validates :password_confirmation, presence: true
 
   def self.authenticate_with_credentials(email, password)
-    @user = User.find_by email: email
+    email_stripped = email.strip
+    @user = User.find_by email: email_stripped
 
     if !@user
       nil
