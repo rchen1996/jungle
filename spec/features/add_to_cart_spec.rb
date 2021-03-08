@@ -18,5 +18,13 @@ RSpec.feature 'AddToCarts', type: :feature, js: true do
   scenario 'They can add a product to the cart' do
     # ACT
     visit root_path
+
+    expect(page).to have_css 'article.product', count: 10
+
+    first('button i.fa-shopping-cart').click
+
+    sleep 1
+
+    expect(find('nav ul.navbar-right')).to have_text 'My Cart (1)'
   end
 end
