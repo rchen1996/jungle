@@ -155,4 +155,47 @@ cat3.products.create!(
   },
 )
 
+puts 'Re-creating Users...'
+
+User.destroy_all
+
+user1 =
+  User.create!(
+    {
+      first_name: 'Alice',
+      last_name: 'Wonderland',
+      email: 'alice@wonderland.com',
+      password: 'password',
+    },
+  )
+
+user2 =
+  User.create!(
+    {
+      first_name: 'Mario',
+      last_name: 'Luigi',
+      email: 'mario@luigi.com',
+      password: 'password',
+    },
+  )
+
+puts 'Re-creating Reviews...'
+
+Review.destroy_all
+
+product_ids = Product.all.size
+
+user_ids = User.all.size
+
+10.times do
+  Review.create!(
+    {
+      product_id: rand(1..product_ids),
+      user_id: rand(1..user_ids),
+      description: Faker::Hipster.paragraph(4),
+      rating: rand(1..5),
+    },
+  )
+end
+
 puts 'DONE!'
