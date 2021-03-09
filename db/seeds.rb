@@ -166,6 +166,7 @@ user1 =
       last_name: 'Wonderland',
       email: 'alice@wonderland.com',
       password: 'password',
+      password_confirmation: 'password',
     },
   )
 
@@ -176,6 +177,7 @@ user2 =
       last_name: 'Luigi',
       email: 'mario@luigi.com',
       password: 'password',
+      password_confirmation: 'password',
     },
   )
 
