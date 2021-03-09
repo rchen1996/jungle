@@ -4,6 +4,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @product = Product.find params[:id]
   end
 end
