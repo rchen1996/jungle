@@ -5,34 +5,35 @@
   </head>
 
   <body>
-    <h1>Jungle Order ID #<%= @order.id %></h1>
+    <h1>Jungle Order ID: <%= @order.id %></h1>
     <p>Thank you for your order. Below are your order details:</p>
 
-    <div class="panel panel-default items">
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th colspan="2">Product</th>
-            <th>Unit Price</th>
-            <th>Quantity</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @products.each do |item| %>
-            <%= render 'product', product: item[:product], quantity: item[:quantity].to_i, total: item[:total] %>
-          <% end %>
-        </tbody>
-        <tfoot>
-          <tr>
-            <th colspan="4">
-              TOTAL:
-            </th>
-            <th>
-              <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
-            </th>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @products.each do |item| %>
+           <%= render 'product', product: item[:product], quantity: item[:quantity].to_i, total: item[:total] %>
+        <% end %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th colspan="4">
+            TOTAL:
+          </th>
+          <th>
+            <br>
+            <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
+
+    <p>Shop with us again soon!</p>
   </body>
