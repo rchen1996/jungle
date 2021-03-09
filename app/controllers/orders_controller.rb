@@ -18,6 +18,18 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+
+      line_items = LineItem.where('order_id = ?', order.id)
+      @products =
+        line_items.map do |item|
+          {
+            product: Product.find_by(id: item.product_id),
+            quantity: item[:quantity],
+            total: item[:total_price_cents],
+          }
+        end
+      UserMailer.order_email(order, @products).deliver_now
+
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
