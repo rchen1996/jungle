@@ -1,6 +1,10 @@
 class CartsController < ApplicationController
-
   def show
+    if session[:user_id]
+      @user = User.find(session[:user_id])
+    else
+      @user = nil
+    end
   end
 
   def add_item
@@ -24,5 +28,4 @@ class CartsController < ApplicationController
     cart.delete(product_id) if cart[product_id] < 1
     update_cart cart
   end
-
 end
