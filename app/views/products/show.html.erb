@@ -31,6 +31,17 @@
       <%= form_for [@product, @review] do |form| %>
         <h2>Write a Review</h2>
 
+        <% if form.object.errors.any? %>
+          <div class="alert alert-danger">
+            <strong>The following errors prevented saving:</strong>
+            <ul>
+              <% form.object.errors.full_messages.each do |error| %>
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
         <div class="form-group">
           <%= form.label :rating %>
           <%= form.select :rating, options_for_select([1, 2, 3, 4, 5]), { include_blank: true }, class: 'form-control' %>
@@ -49,7 +60,7 @@
       <h2>Reviews</h2>
 
       <% @product.reviews.each do |review| %>
-        <%= render 'review', first_name: review.user.first_name, last_name: review.user.last_name, description: review.description, rating: review.rating %>
+        <%= render 'products/review', first_name: review.user.first_name, last_name: review.user.last_name, description: review.description, rating: review.rating %>
       <% end %>
     </div>
 
