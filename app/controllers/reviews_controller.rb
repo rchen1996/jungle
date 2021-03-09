@@ -1,4 +1,6 @@
 class ReviewsController < ApplicationController
+  before_filter :deny_access, unless: :logged_in?
+
   def create
     @product = Product.find(params[:product_id])
 
@@ -17,5 +19,9 @@ class ReviewsController < ApplicationController
 
   def review_params
     params.require(:review).permit(:description, :rating)
+  end
+
+  def logged_in?
+    current_user ? true : false
   end
 end
