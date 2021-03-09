@@ -28,7 +28,26 @@
 
     <div class="row">
       <br>
+      <%= form_for [@product, @review] do |form| %>
+        <h2>Write a Review</h2>
+
+        <div class="form-group">
+          <%= form.label :rating %>
+          <%= form.select :rating, options_for_select([1, 2, 3, 4, 5]), { include_blank: true }, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= form.label :review %>
+          <%= form.text_area :description, class: 'form-control' %>
+        </div>
+
+        <%= form.submit 'Submit', class: 'btn btn-primary' %>
+
+      <% end %>
+
+      <br>
       <h2>Reviews</h2>
+
       <% @product.reviews.each do |review| %>
         <%= render 'review', first_name: review.user.first_name, last_name: review.user.last_name, description: review.description, rating: review.rating %>
       <% end %>
