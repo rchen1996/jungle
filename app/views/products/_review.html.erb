@@ -4,6 +4,11 @@
       <h4><%= "#{first_name} #{last_name}" %></h4>
       <h5>Rating: <%= rating %>/5</h5>
       <p><%= description %></p>
+
+      <% if current_user && current_user.id == user_id %>
+        <%= button_to "Delete", { controller: :reviews, action: "destroy", id: id, product_id: product_id }, method: :delete, class: "btn btn-danger" %>
+      <% end %>
+
     </div>
   </div >
 </article>
