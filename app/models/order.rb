@@ -11,10 +11,7 @@ class Order < ActiveRecord::Base
   private
 
   def update_product_quantity
-    @order = Order.last
-    @items_in_order = @order.line_items
-
-    @items_in_order.each do |item|
+    line_items.each do |item|
       product = Product.find(item.product_id)
       product.quantity -= item.quantity
       product.save
