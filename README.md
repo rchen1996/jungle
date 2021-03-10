@@ -1,7 +1,13 @@
 # Jungle
 
-A mini e-commerce application built with Rails 4.2 for purposes of teaching Rails by example.
+Jungle is a mini e-commerce application built with Rails 4.2. Jungle allows visitors to view products by category and make purchases as both a registered user or a visitor. Customers can view products in more detail and also leave reviews and ratings for each product. Jungle leverages the Stripe API for secure transactions. Upon a successful order, customers are sent an email receipt with their order details.
 
+## Final Product
+
+!["Products catalog/Home Page"](#)
+!["Cart display"](#)
+!["Product details with form to write review and provide rating"](#)
+!["Admin products panel with ability to add and remove products"](#)
 
 ## Setup
 
@@ -16,12 +22,12 @@ A mini e-commerce application built with Rails 4.2 for purposes of teaching Rail
 
 ## Stripe Testing
 
-Use Credit Card # 4111 1111 1111 1111 for testing success scenarios.
+Use Credit Card # 4242 4242 4242 4242 for testing success scenarios. Choose any future date as the expiry date and any 3 numbers for CVC.
 
 More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ## Dependencies
 
-* Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
-* PostgreSQL 9.x
-* Stripe
+- Rails 4.2 [Rails Guide](http://guides.rubyonrails.org/v4.2/)
+- PostgreSQL 9.x
+- Stripe
