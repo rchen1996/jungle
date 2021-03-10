@@ -4,10 +4,10 @@ Jungle is a mini e-commerce application built with Rails 4.2. Jungle allows visi
 
 ## Final Product
 
-!["Products catalog/Home Page"](#)
-!["Cart display"](#)
-!["Product details with form to write review and provide rating"](#)
-!["Admin products panel with ability to add and remove products"](#)
+!["Products catalog/Home Page"](https://github.com/rchen1996/jungle/blob/master/docs/homepage.png?raw=true)
+!["Cart display"](https://github.com/rchen1996/jungle/blob/master/docs/cart-view.png?raw=true)
+!["Product details with form to write review and provide rating"](https://github.com/rchen1996/jungle/blob/master/docs/product-details.png?raw=true)
+!["Admin products panel with ability to add and remove products"](https://github.com/rchen1996/jungle/blob/master/docs/admin-products-panel.png?raw=true)
 
 ## Setup
 
