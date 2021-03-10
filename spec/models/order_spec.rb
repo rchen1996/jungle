@@ -29,7 +29,31 @@ RSpec.describe Order, type: :model do
         )
     end
 
-    xit 'deducts quantity from products based on their line item quantities' do
+    it 'deducts quantity from products based on their line item quantities' do
+      # initialize order
+      @order =
+        Order.new(
+          email: 'alice@wonderland.com',
+          total_cents: 5000,
+          stripe_charge_id: 1_234_567_890,
+        )
+
+      # build line items on order
+      @order.line_items.new(
+        product: @product2,
+        quantity: 2,
+        item_price: @product2.price,
+        total_price: @product2.price * 2,
+      )
+
+      @order.save!
+
+      # reload products to have updated quantities
+      @product1.reload
+      @product2.reload
+
+      # assert quantity values
+      expect(@product2.quantity).to eq(6)
     end
 
     xit 'does not deduct quantity from products that are not in the order' do
