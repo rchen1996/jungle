@@ -4,6 +4,7 @@
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
+    <h5>Rating: <%= product.reviews.average(:rating) ? product.reviews.average(:rating).round(1) : "N/A" %></h5>
   </header>
   <p class="description">
     <%= product.description %>
