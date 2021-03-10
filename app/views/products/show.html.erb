@@ -61,7 +61,7 @@
       <h2>Reviews</h2>
 
       <% @product.reviews.reverse.each do |review| %>
-        <%= render 'products/review', first_name: review.user.first_name, last_name: review.user.last_name, description: review.description, rating: review.rating %>
+        <%= render 'products/review', first_name: review.user.first_name, last_name: review.user.last_name, description: review.description, rating: review.rating, id: review.id, product_id: review.product_id, user_id: review.user_id %>
       <% end %>
     </div>
 
